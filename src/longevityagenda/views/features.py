@@ -1,3 +1,5 @@
+# views/features.py
+
 FEATURES = {
     'Fitness and Exercise': {
         'Calorie Count': 'calorie_count',

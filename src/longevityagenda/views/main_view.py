@@ -4,7 +4,7 @@ from toga import App, MainWindow
 from longevityagenda.views.about_view import AboutView
 from longevityagenda.views.calendar_view import CalendarView
 from longevityagenda.views.challenges_view import ChallengesView
-from longevityagenda.views.dashboard_view import DashboardView
+from longevityagenda.dashboard.dashboard_view import DashboardView
 from longevityagenda.views.fitness_view import FitnessView
 from longevityagenda.views.health_view import HealthView
 from longevityagenda.views.login_view import LoginView
@@ -13,8 +13,7 @@ from longevityagenda.views.progress_view import ProgressView
 from longevityagenda.views.settings_view import SettingsView
 from longevityagenda.views.signup_view import SignupView
 from longevityagenda.views.social_view import SocialView
-from features import FEATURES
-
+from longevityagenda.views.features import FEATURES
 
 class MainView:
     def __init__(self):
@@ -90,7 +89,7 @@ class MainView:
         self.main_window.content = self.health_view.box
 
     def show_login_view(self, widget):
-        self.main_window.content = self.login_view.box
+        self.main_window.content = self.login_view
 
     def show_profile_view(self, widget):
         self.main_window.content = self.profile_view.box
@@ -106,3 +105,12 @@ class MainView:
 
     def show_social_view(self, widget):
         self.main_window.content = self.social_view.box
+
+    def show_health_view(self, widget):
+        self.main_window.content = self.health_view.box
+
+    def show_fitness_view(self, widget):
+        self.main_window.content = self.fitness_view.box
+
+    def show_dashboard_view(self, widget):
+        self.main_window.content = self.dashboard_view.box

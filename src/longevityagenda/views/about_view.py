@@ -1,32 +1,27 @@
+# views/about_view.py
 import toga
-from toga.style import Pack
-from toga.style.pack import COLUMN, ROW
+from toga.style.pack import COLUMN, Pack
+
 
 class AboutView(toga.Box):
-    def __init__(self, heading='About', id=None, style=None):
-        super().__init__(id=id, style=style)
+    def __init__(self):
+        super().__init__(style=Pack(direction=COLUMN))
 
-        self.heading_label = toga.Label(
-            heading,
+        self.heading = toga.Label(
+            'About Longevity Agenda',
             style=Pack(padding=(0, 5))
         )
 
-        # Add the app description
-        app_description = toga.Label(
-            'This app is designed to help users improve their longevity through fitness, health, and social engagement.',
-            style=Pack(padding=(0, 10))
+        self.description = toga.Label(
+            'Longevity Agenda is a fitness and health tracking app designed to help you achieve your health goals. '
+            'Use our app to track your progress, set challenges and goals, and connect with your friends and family to '
+            'stay motivated on your fitness journey.',
+            style=Pack(padding=(0, 5))
         )
 
-        # Add the developer information
-        developer_info = toga.Label(
-            'Developed by John Doe',
-            style=Pack(padding=(0, 10))
+        self.version = toga.Label(
+            'Version 1.0.0',
+            style=Pack(padding=(0, 5))
         )
 
-        # Add all labels to the box
-        self.add(
-            self.heading_label,
-            app_description,
-            developer_info,
-            style=Pack(direction=COLUMN)
-        )
+        self.add(self.heading, self.description, self.version)

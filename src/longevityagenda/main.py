@@ -3,12 +3,13 @@ import csv
 import os
 
 from toga import App as TogaApp
-from toga.style import Pack
-from toga.style.pack import COLUMN, ROW
 
 from longevityagenda.views.main_view import MainView
+from longevityagenda.views.settings_view import SettingsView
+
 
 CHALLENGES_FILE = os.path.join(os.path.dirname(__file__), '..', 'data', 'challenges.csv')
+
 
 def load_challenges():
     challenges = []
@@ -17,6 +18,7 @@ def load_challenges():
         for row in reader:
             challenges.append(row)
     return challenges
+
 
 class LongevityAgenda(TogaApp):
     def __init__(self, *args, **kwargs):
@@ -28,11 +30,22 @@ class LongevityAgenda(TogaApp):
         # Set up main window and view
         self.main_view = MainView()
 
+        # Set up settings view
+        self.settings_view = SettingsView()
+
     def startup(self):
         self.main_window = self.main_view.main_window
         self.main_window.app = self
 
+        # Set up settings menu item
+        settings_item = self.main_view.settings_item
+        settings_item.on_select = self.show_settings
+
         self.main_window.show()
+
+    def show_settings(self, widget):
+        settings_window = self.settings_view.settings_window
+        settings_window.show()
 
 
 def main():
